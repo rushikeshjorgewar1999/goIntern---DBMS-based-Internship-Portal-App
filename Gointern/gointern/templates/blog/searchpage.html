@@ -1,0 +1,89 @@
+{% extends 'basic.html' %}
+{% block title %}Results{% endblock  %}
+{% block body %}
+<section >
+    <div class='container p-5'>
+            <div class="row">
+                <div class="col-lg-9 mx-auto text-center py-5">
+              <span class='lead'>Search results for</span>
+              <h2 class="display-5">{{search}}</h2>
+              <span class="lead">{{count}} results found</span>
+            </div>
+              <!-- Search -->
+                <div class="col-sm-8 col-md-6 text-center col-lg-5 mx-auto">
+                  <form class="input-group mt-4">
+                    <input class="form-control  form-control-lg border-success" type="search" placeholder="Covid-19" aria-label="Search">
+                    <button class="btn btn-success mx-md-2 btn-lg m-0" type="submit">
+                      <span class="d-none d-md-block">Search</span>
+                      <i class="d-block d-md-none fas fa-search"></i></button>
+                  </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row p-5">
+        <div class="col-8 p-5">
+            
+            {% if post|length < 1 %}
+            <div class='text-start'>
+                <h2>No Results found : </h2>
+                <p class='lead'>Your search for <b>{{search}}</b> not found</p><br/>
+                <ul>
+                <li>Search for different keywords</li>
+                <li>Check your Internet Connection</li>
+                <li>Try fewer keywords</li>
+                <li>Try general keywords</li>
+            </ul>
+        </div>
+            {% endif %}
+           
+            {% for i in post %}
+            <div class="card border shadow-lg rounded up-hover p-4 mb-4">
+                <div class="row g-3">
+                    <div class="col-md-9">
+                        <!-- Categories -->
+                        <a href="#" class="badge text-light bg-danger mb-2">{{i.category}}</a>
+                        <!-- Title -->
+                        <h3 class="card-title">
+                            <a href="post-single-2.html" class="btn-link text-reset stretched-link">{{i.title}}</a>
+                        </h3>
+                        <!-- Card info -->
+                        <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                            <li class="nav-item">
+                                <div class="nav-link">
+                                    <div class="d-flex align-items-center position-relative">
+                                        <div class="avatar avatar-xs">
+                                            <img class="avatar-img rounded-circle" src="https://pluspng.com/img-png/user-png-icon-young-user-icon-2400.png" width='50px' height='50px' alt="avatar">
+                                        </div>
+                                        <span class="ms-3 mx-2">by <a href="#" class="stretched-link text-reset btn-link">{{i.author}}</a></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item">{{i.pub_date}}</li>
+                        </ul>
+                    </div>
+                    <!-- Image -->
+                    <div class="col-sm-3">
+                        <img class="rounded-3" src="assets/images/blog/16by9/07.jpg" alt="Card image">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4 p-2 ">
+            <h3 class='text-center '>Popular Posts</h3>
+            {% for p in ps %}
+            <div class="card my-2 ">
+                <div class="card-body">
+                    <strong class='text-primary'>{{p.category}}</strong>
+                    <h5 class="card-title">{{p.title}}</h5>
+                    <strong class='text-primary'>{{p.pub_date}}</strong>
+                    <p class="card-text">{{p.content|truncatechars:50}}</p>
+                    <a href="/blog/{{i.slug}}" class="btn btn-outline-primary">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</div>
+{% endblock body %}

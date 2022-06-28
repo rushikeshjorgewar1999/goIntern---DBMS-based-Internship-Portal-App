@@ -1,0 +1,173 @@
+{% extends 'basic.html' %}
+{% block title %}{{pt.title}}{% endblock  %}
+{% block body %}
+
+<section class="pb-3 pb-lg-5">
+	<div class="container p-5">
+		<div class="row">
+			<div class="col-12">
+        <a href="#" class="badge bg-danger text-light mb-2">{{pt.category}}</a>
+				<h1>{{pt.title}}</h1>
+			</div>
+			 <p class="lead">{{pt.content | truncatechars:300}} </p>
+		</div>
+	</div>
+</section>
+
+<section class="pt-0">
+	<div class="container position-relative" data-sticky-container="">
+		<div class="row">
+			<!-- Left sidebar START -->
+			<div class="col-lg-2">
+				<div class="text-start text-lg-center mb-5" data-sticky="" data-margin-top="80" data-sticky-for="991" style="">
+					<!-- Author info -->
+					<div class="position-relative">
+						<div class="avatar avatar-xl">
+							<img class="avatar-img rounded-circle" src="https://pluspng.com/img-png/user-png-icon-young-user-icon-2400.png" alt="avatar" width='50px' height='50px'>
+						</div>
+						<a href="#" class="h5 stretched-link mt-2 mb-0 d-block">{{pt.author}}</a>
+						<p>Founder of goIntern</p>
+					</div>
+					<hr class="d-none d-lg-block">
+					<!-- Card info -->
+					<ul class="list-inline list-unstyled">
+						<li class="list-inline-item d-lg-block my-lg-2">{{pt.pub_date}}</li>
+						<li class="list-inline-item d-lg-block my-lg-2">5 min read</li>
+						<li class="list-inline-item d-lg-block my-lg-2"><a href="#" class="text-body"><i class="far fa-heart me-1"></i></a> 266</li>
+						<li class="list-inline-item d-lg-block my-lg-2">{{count}} Views</li>
+					</ul>
+
+					{% comment %} like & share button {% endcomment %}
+					
+                    <div class="fb-like" data-href="http://127.0.0.1:8000/blog/{{pt.slug}}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+				</div>
+			</div>
+			<!-- Left sidebar END -->
+			<!-- Main Content START -->
+			<div class="col-lg-7 mb-5">
+      	<p><span class="dropcap">M</span>{{pt.content}} </p>
+				
+				<div class="row g-0">
+					<div class="col-sm-6 bg-primary-soft p-4 position-relative border-end border-1 rounded-start">
+						<span><i class="bi bi-arrow-left me-3 rtl-flip"></i>Previous post</span>
+						<h5 class="m-0"><a href="/blog/{{pst.slug}}" class="stretched-link btn-link text-reset">{{pst.title}}</a></h5>
+					</div>
+					<div class="col-sm-6 bg-primary-soft p-4 position-relative text-sm-end rounded-end">
+						<span>Next post<i class="bi bi-arrow-right ms-3 rtl-flip"></i></span>
+						<h5 class="m-0"><a href="/blog/{{st.slug}}" class="stretched-link btn-link text-reset">{{st.title}}</a></h5>
+					</div>
+				</div>
+
+				<!-- Related post START -->
+				
+				<!-- Related post END -->
+
+				<!-- Divider -->
+				<hr>
+
+				<!-- Author info START -->
+				<div class="d-flex py-4">
+					<!-- Avatar -->
+					<a href="#">
+						<div class="avatar avatar-xxl me-4">
+							<img class="avatar-img rounded-circle" src="https://pluspng.com/img-png/user-png-icon-young-user-icon-2400.png" alt="avatar" width='50px' height='50px'>
+						</div>
+					</a>
+					<!-- Info -->
+					<div>
+						<div class="d-sm-flex align-items-center justify-content-between mx-2">
+							<div>
+								<h4 class="m-0"><a href="#" class="text-reset">{{pt.author}}</a></h4>
+								<small>Founder of goIntern</small>
+							</div>
+							<a href="#" class="btn btn-xs btn-primary-soft">View Articles</a>
+						</div>
+						<p class="my-2 mx-2">Louis Ferguson is a senior editor for the blogzine and also reports on breaking news based in London. He has written about government, criminal justice, and the role of money in politics since 2015.</p>
+						<!-- Social icons -->
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link ps-0 pe-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-linkedin"></i></a>
+							</li>
+						</ul>					
+					</div>
+				</div>
+				<!-- Author info END -->
+
+				<!-- Divider -->
+				<hr>
+				<!-- Comments START -->
+            	<!-- Reply END -->
+			</div>
+			<!-- Main Content END -->
+			
+			<!-- Right sidebar START -->
+			<div class="col-lg-3">
+				<div data-sticky="" data-margin-top="80" data-sticky-for="991" style="">
+	      	<h4>Like & Share this article</h4>
+              				<!-- Advertisement -->
+					<div class="mt-4">
+						<a href="#" class="d-block card-img-flash">
+							<img src="assets/images/adv.png" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- Right sidebar END -->
+		</div>
+	</div>
+    <div class='container text-center p-5 '>
+        <!-- Comment level 1-->
+        <h3 class='text-start'>Add Comments with facebook</h3>
+        <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/{{pt.slug}}" data-width="" data-numposts="5"></div>
+        
+        <h3 class='text-center'>{{count}} Comments</h3>
+        {% for ct in comments %}
+        <div class="my-4 d-flex text-center">
+            <img class="avatar border border-dark avatar-md rounded-circle float-start me-3" src="https://static.vecteezy.com/system/resources/previews/000/551/599/original/user-icon-vector.jpg" width='50px' height='50px' alt="avatar">
+            <div>
+            {% load humanize %}
+                <div class="mb-2 mx-4">
+                    <h5 class="m-0">{{user.username}}</h5>
+                    <span class="me-3 small">{{ct.time | naturaltime}} </span>
+                <a href="#" class="text-body text-primary mx-md-2 fw-normal">Reply</a>
+            </div>
+            <p class='mx-md-4'>{{ct.comment}} </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!-- Comment children level 2 -->
+
+{% if user.is_authenticated %}
+<div class='container-fluid  p-5'>
+    <h3>Leave a reply</h3>
+    <form method='post' action='/blog/postcomment/' class="row g-3 mt-2">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <input type="hidden"  name='postsno' value="{{pt.pid}}" class="form-control">
+          </div>
+          <!-- custom checkbox -->
+          <div class="col-12">
+              <label class="form-label">Your Comment *</label>
+              <textarea id='comment' name='comment' class="w-100 form-control" rows="3"></textarea>
+            </div>
+            <div class="col-12 ">
+                <button type="submit" class="btn my-2 btn-primary">Post comment</button>
+            </div>
+        </form>
+    </div>
+    {% else %} 
+    <div class='container-fluid p-5'>
+        <h3 class='text-start'>Please login to post comments</h3>
+    </div>
+   {% endif %}
+</section>
+
+{% endblock  %}
+

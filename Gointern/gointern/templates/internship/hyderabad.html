@@ -1,0 +1,29 @@
+{% extends 'basic.html' %}
+{% block title %}Hyderabad{% endblock title %}
+{% block body %}
+<div class='container-fluid text-center '>
+    <h1 class='display-1 text-center'>Internships in Hyderabad</h1>
+    <div class='row text-center '>
+        <div class='col-md-8 text-start p-5'>
+            {% for c in chen %}
+            <div class="card  w-25">
+                <span class='badge bg-primary text-light'>{{c.category}}</span>
+                <div class="card-body ">
+                    <h5 class="card-title">{{c.post}}</h5>
+                    <ul class='text-start'>
+                        <li>Company - <b>{{c.firm}}</b></li>
+                        <li>Location - </b>{{c.location}}</b></li>
+                        <li>Stipend - <b>{{c.stipend}}</b></li>
+                        <li>Duration - <b>{{c.duration}}</b></li>
+                    </ul>
+                    <a href="/internship/{{c.jobid}}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class='col-md-4'>
+
+        </div>
+    </div>
+</div>
+{% endblock body %}

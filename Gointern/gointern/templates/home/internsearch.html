@@ -1,0 +1,58 @@
+{% extends 'basic.html' %}
+{% block title %}Search Internships{% endblock  %}
+{% block body %}
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'myhome'%}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Search</li>
+    </ol>
+  </nav>
+<div class='container-fluid p-5'>
+    <h1 class='display-4 text-center'>Search Results : {{count}} Items Found</h1>
+    <div class="row p-5">
+        <div class="col-8 p-5">
+            {% if data|length < 1 %}
+            <div class='text-start'>
+                <h2>No Results found : </h2>
+                <p class='lead'>Your search for <b>{{role}} in {{company}} at {{location}}</b> not found</p><br/>
+                <ul>
+                <li>Search for different keywords</li>
+                <li>Check your Internet Connection</li>
+                <li>Try fewer keywords</li>
+                <li>Try general keywords</li>
+            </ul>
+        </div>
+            {% endif %}
+           
+            {% for i in data %}
+            <div class="card  rounded-4 ">
+                <div class="card-header text-center" style='background-color:#000000'>
+                    <strong class='text-primary'>{{i.category}}</strong>       
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{i.posttitle}}</h5>
+                    <p class="card-text">{{i.desc|truncatechars:250}}</p>
+                    <a href="/internship/{{i.jobid}}" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="card-footer text-center "style='background-color:#000000'>
+                    {% comment %} <p class='lead text-light'>Written by : <span class='text-light'>{{i.author}} - {{i.pub_date}}</span> post-views : {{pt.views}}  </p>  {% endcomment %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4 p-2 ">
+            <h3 class='text-center '>Popular Internships</h3>
+            {% for cp in catpost %}
+            <div class="card my-2 shadow-lg ">
+                <div class="card-body">
+                    <strong class='text-primary'>{{cp.location}}</strong>
+                    <h5 class="card-title">{{cp.post}}</h5>
+                    <strong class='text-primary'>{{cp.firm}}</strong>
+                    <p class="card-text">{{p.location}}</p>
+                    <a href="/internship/{{cp.jobid}}" class="btn btn-outline-primary">Get Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</div>
+{% endblock body %}

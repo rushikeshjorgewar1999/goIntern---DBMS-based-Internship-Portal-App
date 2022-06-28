@@ -1,0 +1,277 @@
+{% extends 'basic.html' %}
+{% block title %}goIntern - Search Internships{% endblock  %}
+{% block body %}
+<main>
+	<section style='background-color:#000000'>
+		<div class='container-fluid p-5'>
+			<div class='row'>
+				<div class='col-md-8 p-5 '>
+					<h1 class='text-light display-1 '>Find, Learn & Grow</h1>
+					<p class='lead text-light text-center'>Your better tomorrow starts here.</p>
+					<h2 class='text-light text-center text-start'>#KaroShuruwatYehiSe</h2>
+
+				</div>
+				<div class='col-md-4 p-5 bg-light  rounded shadow-lg text-center'>
+					<h3>Find Your Dream Internship on goIntern</h3>
+        <p class='lead'>Discover wide range of Technical, Marketing & Sales Internship at the comfort  of your home.</p>
+        <form class='form' method='get' action='/searchintern/'>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Role" aria-label="First name" name='role' id='role'>
+		</div>
+          <div class="col my-3">
+			  <input type="text" class="form-control" placeholder="Location" required aria-label="First name" name='location'>
+			</div>
+			<div class='col'>
+				<button type='submit' class='w-100 btn btn-primary '>Search</button>
+			</form>
+		</div>
+    </div>
+</div>  
+</section>
+<div class='container-fluid text-center p-5'>
+	<div class='row p-5'>
+		<h1>Made with <b class='text-danger'>&hearts;</b> by <b>Rushikesh Jorgewar</b></h1>
+	</div>
+</div>
+  <section class='section'>
+    <!-- No image + Contextual dropdown menu -->
+	<div class="container-fluid text-start p-5">
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-12">
+				<h2 class="fs-1 fw-bold">
+					<span class="position-relative z-index-9">Trending</span>
+					<span class="position-relative z-index-1">Courses
+						<!-- SVG START -->
+          </span>
+				</h2>
+				<p class="mb-0">Find courses that are best for your profession</p>
+			</div>
+		</div>
+
+		<div class="row g-4">
+			<!-- Card START -->
+			<div class="col-md-6 col-xl-4">
+				<div class="card my-2 shadow-hover overflow-hidden bg-transparent">
+					<div class="position-relative">
+						<!-- Image -->
+						<img class="card-img-top" src="assets/images/courses/4by3/16.jpg" alt="Card image">
+						<!-- Overlay -->
+						<div class="bg-overlay bg-dark opacity-4"></div>
+						<div class="card-img-overlay d-flex align-items-start flex-column">
+							<!-- Card overlay bottom -->
+							<div class="w-100 mt-auto d-inline-flex">
+								<div class="d-flex align-items-center bg-white p-2 rounded-2">
+									<!-- Avatar -->
+									<div class="avatar avatar-sm me-2">
+										<img class="avatar-img rounded-1" src="assets/images/avatar/10.jpg" alt="avatar">
+									</div>
+									<!-- Avatar info -->
+									<div>
+										<h6 class="mb-0"><a href="#" class="text-dark">Larry Lawson</a></h6>
+										<span class="small">Tutor</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+          <!-- Card body -->
+					<div class="card-body">
+						<!-- Badge and icon -->
+						<div class="d-flex justify-content-between mb-3">
+							<div class="hstack gap-2">
+								<a href="#" class="badge bg-orange bg-opacity-10 text-orange">All level</a>
+								<a href="#" class="badge bg-dark text-white">6 month</a>
+							</div>
+							<a href="#" class="h6 fw-light mb-0"><i class="far fa-bookmark"></i></a>
+						</div>
+						<!-- Title -->
+						<h5 class="card-title"><a href="#">The Complete Digital Marketing Course - 12 Courses in 1</a></h5>
+						<!-- Rating -->
+						<ul class="list-inline">
+							<li class="list-inline-item h6 fw-light mb-0">4.5</li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
+							<li class="list-inline-item ms-2 text-reset">(6,500)</li>
+						</ul>
+						<!-- Divider -->
+						<hr>
+						<!-- Time -->
+						<div class="d-flex justify-content-between align-items-center mb-2">
+							<h4 class="text-success mb-0">$125</h4>
+							<span class="h6 fw-light mb-0 me-3"><i class="far fa-clock text-danger me-2"></i>6h 56m</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Card END -->
+
+			<!-- Card START -->
+			<div class="col-md-6 col-xl-4">
+				<div class="card my-2 shadow-hover overflow-hidden bg-transparent">
+					<div class="position-relative">
+						<!-- Image -->
+						<img class="card-img-top" src="assets/images/courses/4by3/14.jpg" alt="Card image">
+						<!-- Overlay -->
+						<div class="bg-overlay bg-dark opacity-4"></div>
+						<div class="card-img-overlay d-flex align-items-start flex-column">
+							<!-- Card overlay bottom -->
+							<div class="w-100 mt-auto d-inline-flex">
+								<div class="d-flex align-items-center bg-white p-2 rounded-2">
+									<!-- Avatar -->
+									<div class="avatar avatar-sm me-2">
+										<img class="avatar-img rounded-1" src="assets/images/avatar/08.jpg" alt="avatar">
+									</div>
+									<!-- Avatar info -->
+									<div>
+										<h6 class="mb-0"><a href="#" class="text-dark">Billy Vasquez</a></h6>
+										<span class="small">Developer</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card body -->
+					<div class="card-body">
+						<!-- Badge and icon -->
+ 						<div class="d-flex justify-content-between mb-3">
+							<div class="hstack gap-2">
+								<a href="#" class="badge bg-info bg-opacity-10 text-info">Beginner</a>
+								<a href="#" class="badge bg-dark text-white">8 month</a>
+							</div>
+							<a href="#" class="text-danger"><i class="fas fa-bookmark fa-fw"></i></a>
+						</div>
+						<!-- Title -->
+						<h5 class="card-title"><a href="#">Angular – The Complete Guide (2021 Edition)</a></h5>
+						<!-- Rating -->
+						<ul class="list-inline">
+							<li class="list-inline-item h6 fw-light mb-0">4.5</li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
+							<li class="list-inline-item ms-2 text-reset">(5,436)</li>
+						</ul>
+						<!-- Divider -->
+						<hr>
+						<!-- Time -->
+						<div class="d-flex justify-content-between align-items-center mb-2">
+							<h4 class="text-success mb-0">$355</h4>
+							<span class="h6 fw-light mb-0 me-3"><i class="far fa-clock text-danger me-2"></i>12h 56m</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Card END -->
+
+			<!-- Card START -->
+			<div class="col-md-6 col-xl-4">
+				<div class="card shadow-hover overflow-hidden bg-transparent">
+					<div class="position-relative">
+						<!-- Image -->
+						<img class="card-img-top" src="assets/images/courses/4by3/21.jpg" alt="Card image">
+						<!-- Overlay -->
+						<div class="bg-overlay bg-dark opacity-4"></div>
+						<div class="card-img-overlay d-flex align-items-start flex-column">
+							<!-- Card overlay bottom -->
+							<div class="w-100 mt-auto d-inline-flex">
+								<div class="d-flex align-items-center bg-white p-2 rounded-2">
+									<!-- Avatar -->
+									<div class="avatar avatar-sm me-2">
+										<img class="avatar-img rounded-1" src="assets/images/avatar/05.jpg" alt="avatar">
+									</div>
+									<!-- Avatar info -->
+									<div>
+										<h6 class="mb-0"><a href="#" class="text-dark">Lori Stevens</a></h6>
+										<span class="small">psychiatrist</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card body -->
+					<div class="card-body">
+						<!-- Badge and icon -->
+						<div class="d-flex justify-content-between mb-3">
+							<div class="hstack gap-2">
+								<a href="#" class="badge bg-info bg-opacity-10 text-info">Beginner</a>
+								<a href="#" class="badge bg-dark text-white">12 month</a>
+							</div>
+							<a href="#" class="h6 fw-light mb-0"><i class="far fa-bookmark fa-fw"></i></a>
+						</div>
+						<!-- Title -->
+						<h5 class="card-title"><a href="#">Time Management Mastery: Do More, Stress Less</a></h5>
+						<!-- Rating -->
+						<ul class="list-inline">
+							<li class="list-inline-item h6 fw-light mb-0">3.5</li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
+							<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+							<li class="list-inline-item ms-2 text-reset">(1,254)</li>
+						</ul>
+						<!-- Divider -->
+						<hr>
+						<!-- Time -->
+						<div class="d-flex justify-content-between align-items-center mb-2">
+							<h4 class="text-success mb-0">$280</h4>
+							<span class="h6 fw-light mb-0 me-3"><i class="far fa-clock text-danger me-2"></i>5h 40m</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Card END -->
+		</div>
+	</div>
+  <div class='container-fluid text-center p-5'>
+    <h3>World's Top Companies Hire From Us</h3>
+    <div class='row '>
+    <div class='col-md-1 p-5'>
+      <a href='#' class=''/><img src='https://cdn-icons-png.flaticon.com/512/5969/5969323.png' class='img-fluid'/></a>
+    </div>
+    <div class='col-md-1 p-5'>
+      <a href=''><img src='https://cdn-icons-png.flaticon.com/512/732/732221.png' class='img-fluid'/></a>
+    </div>
+    <div class='col-md-1 p-5'>
+      <a href='#'><img src='https://cdn-icons-png.flaticon.com/512/1377/1377239.png' class='img-fluid'/></a>
+    </div>
+    <div class='col-md-1 p-5'>
+      <a href='#'><img src='https://cdn-icons-png.flaticon.com/256/2991/2991148.png'  class='img-fluid'/></a>
+    </div>
+    <div class='col-md-1 p-5'>
+      <a href='#'><img src='https://cdn-icons-png.flaticon.com/512/349/349221.png'  class='img-fluid'/></a>
+    </div>
+    <div class='col-md-1 p-5'>
+      <a href='#'><img src='https://cdn-icons-png.flaticon.com/512/6033/6033716.png'  class='img-fluid'/></a>
+    </div>
+    <div class='col-md-1 p-5'>
+		<a href='#'><img src='https://cdn-icons-png.flaticon.com/512/831/831329.png'  class='img-fluid'/></a>
+	  </div>
+	  <div class='col-md-1 p-5'>
+		<a href='#'><img src='https://cdn-icons-png.flaticon.com/512/1724/1724639.png'  class='img-fluid'/></a>
+	  </div>
+	  <div class='col-md-1 p-5'>
+		<a href='#'><img src='https://cdn-icons-png.flaticon.com/512/5968/5968330.png'  class='img-fluid'/></a>
+	  </div>
+	  <div class='col-md-1 p-5'>
+		<a href='#'><img src='https://cdn-icons-png.flaticon.com/512/2111/2111320.png'  class='img-fluid'/></a>
+	  </div>
+	  <div class='col-md-1 p-5'>
+		<a href='#'><img src='https://cdn-icons.flaticon.com/png/512/2504/premium/2504947.png?token=exp=1656158943~hmac=73f32ea2fb37025e71c01ae34dbe2aef'  class='img-fluid'/></a>
+	  </div>
+	  <div class='col-md-1 p-5'>
+		<a href='#'><img src='https://cdn-icons.flaticon.com/png/512/3536/premium/3536505.png?token=exp=1656158687~hmac=b075603eb98a790cf0e8e8b8861df2a4'  class='img-fluid'/></a>
+	  </div>
+
+  </div>
+</div>
+
+</section>
+</main>
+
+{% endblock  %}

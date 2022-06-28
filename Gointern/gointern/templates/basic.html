@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{% block title %}    {% endblock  %} </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+
+      function handleCredentialResponse(response) {
+        console.log("Encoded JWT ID token: " + response.credential);
+      }
+      window.onload = function () {
+        google.accounts.id.initialize({
+          client_id: "YOUR_GOOGLE_CLIENT_ID",
+          callback: handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+          document.getElementById("buttonDiv"),
+          { theme: "outline", size: "large" }  // customization attributes
+        );
+        google.accounts.id.prompt(); // also display the One Tap dialog
+      }
+
+      {% comment %} facebook login {% endcomment %}
+      function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+        // The response object is returned with a status field that lets the
+        // app know the current login status of the person.
+        // Full docs on the response object can be found in the documentation
+        // for FB.getLoginStatus().
+        if (response.status === 'connected') {
+          // Logged into your app and Facebook.
+          testAPI();
+        } else {
+          // The person is not logged into your app or we are unable to tell.
+          document.getElementById('status').innerHTML = 'Please log ' +
+            'into this app.';
+        }
+      }
+    
+      // This function is called when someone finishes with the Login
+      // Button.  See the onlogin handler attached to it in the sample
+      // code below.
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      }
+    
+      window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '{your-app-id}',
+        cookie     : true,  // enable cookies to allow the server to access 
+                            // the session
+        xfbml      : true,  // parse social plugins on this page
+        version    : '{api-version}' // Specify the Graph API version to use
+      });
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+    
+      };
+    
+      // Load the SDK asynchronously
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    
+      // Here we run a very simple test of the Graph API after login is
+      // successful.  See statusChangeCallback() for when this call is made.
+      function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+          console.log('Successful login for: ' + response.name);
+          document.getElementById('status').innerHTML =
+            'Thanks for logging in, ' + response.name + '!';
+        });
+      }
+
+    </script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0" nonce="5aBEDkzt"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0" nonce="MPIJ2iAp"></script>
+  </head>
+  <body>
+
+    <header class="sticky-top text-white bg-danger">
+        <div class="container-fluid ">
+            <div class="d-flex col-md-12 flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                
+              <a href="{% url 'myhome'%}" class="d-flex align-items-center mb-2 mx-3 mb-lg-0 text-white text-decoration-none lead"><b>goIntern</b></a>
+              <ul class="nav col-6 text-center col-lg-auto me-lg-auto mx-5 justify-content-center mb-md-0 text-center">
+                <li><a href="{% url 'internhome'%}" class="nav-link px-2 text-light">Internships</a></li>
+                <li><a href="{% url 'shop' %}" class="nav-link px-2 text-light">Shop</a></li>
+                <li><a href="{% url 'bloghome'%}" class="nav-link px-2 text-light ">Blogs</a></li>
+                <li><a href="{% url 'registerhome'%}" class="nav-link px-2 text-light">Registration</a></li>
+                <li><a href="{% url 'contact'%}" class="nav-link px-2 text-light">Contact</a></li>
+              </ul>
+
+              <form method='get' action="{%url  'searchpage'%}" class=" d-flex text-center col-lg-auto my-md-2 " role="search" >
+                <input type="search" id='search' name='search' class="form-control h-25 form-control-dark text-light bg-light" placeholder="Search articles" aria-label="Search">
+                <button class='btn mx-2  btn-outline-light' type='submit'>Submit</button>
+              </form>
+            
+            {% if request.user.is_authenticated %}
+              <div class="dropdown ms-5 ms-lg-0 mx-5">
+                <a class="avatar avatar-sm p-0 text-light" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img class="avatar-img rounded-circle" src="https://pluspng.com/img-png/user-png-icon-young-user-icon-2400.png" width='40px' height='40px' alt="avatar">
+                </a>
+                <span class="lead" href="#">Hello {{request.user}}</span>
+                  <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+                    <!-- Profile info -->
+                    <li class="px-3">
+                      <div class="d-flex align-items-center">
+                        <!-- Avatar -->
+                        <div class="avatar me-3">
+                          <img class="avatar-img rounded-circle shadow" src="http://cdn.onlinewebfonts.com/svg/img_454260.png" alt="avatar">
+                        </div>
+                        <div>
+                          <a class="h6" href="#">{{request.user}}</a>
+                          <p class="small m-0">{{user.email}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                    </li>
+                    <!-- Links -->
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
+                    <li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Log Out</a></li>
+                    <li> <hr class="dropdown-divider"></li>
+                    <!-- Dark mode switch START -->
+                    <li>
+                      <div class="modeswitch-wrap" id="darkModeSwitch">
+                        <div class="modeswitch-item">
+                          <div class="modeswitch-icon"></div>
+                        </div>
+                        <span>Dark mode</span>
+                      </div>
+                    </li> 
+                    <!-- Dark mode switch END -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% else %}
+
+              <div class="text-end col-md-4" >
+                <a type="button" role='button' href='/login/' class="btn  btn-outline-light ">Login</a>
+                <a role='button' id='signup' type="button" href='/signup/' class="btn btn-outline-light">Sign-up</a>
+              </div>
+              {% endif %}  
+
+          </div>
+        </div>
+      </header>
+      
+      {% for message in messages %}
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+
+      
+      {% block body %}
+    
+      {% endblock body %}
+      <footer class="pt-5" style='background-color:#000000'>
+        <div class="container">
+          <!-- About and Newsletter START -->
+          <div class="row pt-3 pb-4">
+            <div class="col-md-3">
+            <h4 class='text-light text-center display-4'>goIntern</h4>
+            </div>
+            <div class="col-md-5">
+              <p class="text-muted text-center text-capitalize">goIntern is one stop solution for finding internships online. You can apply for any internships at any location for free. And if you don't have the skill you can refer our top quality articles and Purchase our courses. Grow your Future with goIntern.</p>
+            </div>
+            <div class="col-md-4 ">
+              <!-- Form -->
+              <form class="row text-light text-center row-cols-lg-auto g-2 align-items-center justify-content-end">
+                <div class="col-12">
+                  <p class='lead'>Subscribe for updates</p>
+                  <input type="email" class="form-control" placeholder="Enter your email address">
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary my-2">Subscribe</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- About and Newsletter END -->
+      
+          <!-- Divider -->
+          <hr>
+      
+          <!-- Widgets START -->
+          <div class="row pt-5 text-center">
+            <!-- Footer Widget -->
+            <div class="col-md-6  col-lg-3 mb-4">
+              <h5 class="mb-4 text-white">Recent post</h5>
+              <!-- Item -->
+              <div class="mb-4 position-relative">
+                <div><a href="/blog/{{j.slug}}" class="badge bg-danger text-light mb-2">{{j.category}}</a></div>
+                <a href="/blog/{{j.slug}}" class="btn-link text-white fw-normal">{{j.title}}</a>
+                {% load humanize %}
+                <ul class="nav nav-divider align-items-center small mt-2 text-muted">
+                  <li class="nav-item position-relative">
+                    <div class="nav-link">by <a href="/blog/{{j.slug}}" class="stretched-link text-reset btn-link">{{j.author}}</a>
+                    </div>
+                  </li>
+                  <li class="nav-item">{{j.pub_date|naturaltime}}</li>
+                </ul>
+              </div>
+              <!-- Item -->
+              <div class="mb-4 position-relative">
+                <div><a href="/blog/{{p.slug}}" class="badge text-light bg-info mb-2">{{p.category}}</a></div>
+                <a href="/blog/{{p.slug}}" class="btn-link text-white fw-normal">{{p.title}}</a>
+                <ul class="nav nav-divider align-items-center small mt-2 text-muted">
+                  <li class="nav-item position-relative">
+                    <div class="nav-link">by <a href="/blog/{{p.slug}}" class="stretched-link text-reset btn-link">{{p.author}}</a>
+                    </div>
+                  </li>
+                  <li class="nav-item">{{p.pub_date}}</li>
+                </ul>
+              </div>
+            </div>
+      
+            <!-- Footer Widget -->
+            <div class="col-md-6 text-start col-lg-3 mb-4">
+              <h5 class="mb-4 text-white">Internships</h5>
+              <div class="row">
+                <div class="col-6">
+                  <ul class="nav flex-column text-primary-hover">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'pune'%}">Pune</a></li>
+                    <li class="nav-item"><a class="nav-link pt-0" href="{% url 'bangalore'%}">Bangalore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'chennai'%}">Chenai</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'hyderabad'%}">Hyderabad</a></li>
+                  </ul>
+                  div*
+                </div>
+                <div class="col-md-6">
+                  <ul class="nav flex-column text-primary-hover">
+                    <li class="nav-item"><a class="nav-link pt-0" href="#">post article</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">post job</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'habout'%}">About</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Footer Widget -->
+            <div class="col-sm-6 col-lg-3 mb-4">
+              <h5 class="mb-4 text-white">Learn</h5>
+              <ul class="nav flex-column text-primary-hover">
+                <li class="nav-item"><a class="nav-link pt-0" href="#">Machine Learning</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Databases</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Web Framework</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Languages</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">CS Subjects</a></li>
+              </ul>
+            </div>
+      
+            <!-- Footer Widget -->
+            <div class="col-sm-6 col-lg-3 mb-4">
+              <h5 class="mb-4 text-white">Popular Internships</h5>
+              <div class="mb-4 position-relative">
+                <div><a href="#" class="badge bg-danger text-light mb-2">{{j.category}}</a></div>
+                <a href="post-single-3.html" class="btn-link text-white fw-normal">{{j.title}}</a>
+                {% load humanize %}
+                <ul class="nav nav-divider align-items-center small mt-2 text-muted">
+                  <li class="nav-item position-relative">
+                    <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">{{j.author}}</a>
+                    </div>
+                  </li>
+                  <li class="nav-item">{{j.pub_date|naturaltime}}</li>
+                </ul>
+              </div>
+              <!-- Item -->
+              <div class="mb-4 position-relative">
+                <div><a href="#" class="badge text-light bg-info mb-2">{{p.category}}</a></div>
+                <a href="post-single-3.html" class="btn-link text-white fw-normal">{{p.title}}</a>
+                <ul class="nav nav-divider align-items-center small mt-2 text-muted">
+                  <li class="nav-item position-relative">
+                    <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">{{p.author}}</a>
+                    </div>
+                  </li>
+                  {% load humanize %}
+                  <li class="nav-item">{{p.pub_date}}</li>
+                </ul>
+              </div>
+            </div>
+
+          <!-- Widgets END -->
+      
+          <!-- Hot topics START -->
+          <!-- Hot topics END -->
+        </div>
+      
+        <!-- Footer copyright START -->
+        <div class="bg-dark-overlay-3 mt-5">
+          <div class="container">
+            <div class="row align-items-center justify-content-md-between py-4">
+              <div class="col-md-6">
+                <!-- Copyright -->
+                <div class="text-center text-md-start text-primary-hover lead text-light">©2022 <a href="https://www.webestica.com/" class="text-reset btn-link" target="_blank">goIntern</a>. All rights reserved
+                </div>
+              </div>
+              <div class="col-md-6 d-sm-flex align-items-center justify-content-center justify-content-md-end">
+                <!-- Language switcher -->
+                <div class="dropup me-0 me-sm-3 mt-3 mt-md-0 text-center text-sm-end">
+                  <a class="dropdown-toggle text-primary-hover" href="#" role="button" id="languageSwitcher" data-bs-toggle="dropdown" aria-expanded="false">
+                    English Edition
+                  </a>
+                  <ul class="dropdown-menu min-w-auto" aria-labelledby="languageSwitcher">
+                    <li><a class="dropdown-item" href="#">English</a></li>
+                    <li><a class="dropdown-item" href="#">German </a></li>
+                    <li><a class="dropdown-item" href="#">French</a></li>
+                  </ul>
+                </div>
+                <!-- Links -->
+                <ul class="nav text-primary-hover text-center text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
+                  <li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+                  <li class="nav-item"><a class="nav-link pe-0" href="#">Cookies</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer copyright END -->
+      </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

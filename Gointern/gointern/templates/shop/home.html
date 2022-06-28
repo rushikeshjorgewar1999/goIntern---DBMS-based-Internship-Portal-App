@@ -1,0 +1,178 @@
+{% extends 'basic.html' %}
+{% block title %}Shop{% endblock title %}
+{% block body %}
+<main>
+    {% load static %}
+    <section class="py-0 " style='background-color:#000000'>
+        <div class="container-fluid  p-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-light bg-dark p-4 rounded position-relative overflow-hidden">
+    
+                        <div class="row position-relative align-items-center">
+    
+                            <!-- Content -->
+                            <div class="col-md-6 px-md-5">
+                                <!-- Title -->
+                                <h1 class="mb-3">Welcome to our online book store!</h1>
+                                <p class="mb-3">Expand knowledge by reading book Two before narrow not relied on how except moment myself Dejection assurance. </p>
+    
+                                <!-- Search -->
+                                <form class="bg-body rounded p-2">
+                                    <div class="input-group">
+                                        <input class="form-control border-0 me-1" type="search" placeholder="Search book">
+                                        <button type="button" class="btn btn-primary mx-2 rounded">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+    
+                            <!-- Image -->
+                            <div class="col-md-6 text-center">
+                                <img src="assets/images/book/book-bg.svg" alt="">
+                            </div>
+                        </div> <!-- Row END -->
+                    </div>
+                </div>
+            </div> <!-- Row END -->
+        </div>
+    </section>
+    
+    <section class="py-5">
+        <div class="container-fluid p-5">
+            <div class="row">
+                <!-- Main content START -->
+                <div class="col-12">
+    
+                    <!-- Search option START -->
+                    <div class="row mb-4 align-items-center">
+    
+                        <!-- Title -->
+                        <div class="col-md-4">
+                            <h5 class="mb-0">All Listed Books</h5>
+                        </div>
+    
+                    </div>
+                    <!-- Search option END -->
+    
+                    <!-- Book Grid START -->
+                    <div class="row g-4">
+                        <!-- Card item START -->
+                        {% for p in p %}
+                        <div class="col-sm-6 my-2 col-lg-4 col-xl-3">
+                            <div class="card shadow h-100">
+                                <div class="position-relative">
+                                    <!-- Image -->
+                                    <img src="images/{{p.pimg}}" class="card-img-top" alt="book image">
+                                    <!-- Overlay -->
+                                    <div class="card-img-overlay d-flex z-index-0 p-3">
+                                        <!-- Card overlay Top -->
+                                        <div class="w-100 mb-auto d-flex justify-content-end">
+                                            <!-- Card format icon -->
+                                            <div class="icon-md bg-dark rounded-circle fs-5">
+                                                <a href="#" class="text-white"><i class="bi bi-book"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Card body -->
+                                <div class="card-body px-3">
+                                    <!-- Title -->
+                                    <h5 class="card-title mb-0">
+                                        <a href="/shop/{{p.slug}}" class="stretched-link">{{p.pname}}</a>
+                                    </h5>
+                                    <p class='badge bg-danger text-light my-2'>{{p.category}}</p>
+                                    <div>
+                                        <a href="{% url 'checkout'%}" class='btn btn-outline-danger'>Buy now</a>
+                                        <a href='' class='btn btn-danger'>Add to cart</a>
+                                    </div>
+                                </div>
+    
+                                <!-- Card footer -->
+                                <div class="card-footer pt-0 px-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="h6 fw-light mb-0">{{p.author}}</span>
+                                        <!-- Price -->
+                                        <h5 class="text-success mb-0">&#8377; {{p.price}}({{p.discount}}% off)</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                           </div>
+                        </div>
+                    </div>
+                    <!-- Book Grid END -->
+                </div>
+                <!-- Main content END -->
+            </div><!-- Row END -->
+        </div>
+    </section>
+
+    <section class="pt-0">
+	<div class="container-fluid p-5">
+		<div class="row g-4">
+
+			<!-- Action box item START -->
+			<div class="col-lg-6 shadow-lg rounded bg-dark text-light">
+				<div class="bg-purple bg-opacity-10 rounded-3 p-5 h-100">
+
+					<!-- Content -->
+					<div class="row g-3 align-items-center">
+						<!-- Image -->
+						<div class="col-sm-5 col-lg-12 col-xl-5">
+							<img src="assets/images/book/01.jpg" alt="">
+						</div>
+
+						<!-- Content -->
+						<div class="col-sm-7 col-lg-12  col-xl-7">
+							<!-- Title -->
+							<h3 class="mb-2">Best selling book of the month</h3>
+							<!-- Rating star -->
+							<ul class="list-inline mb-2">
+								<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+								<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+								<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+								<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+								<li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
+							</ul>
+
+							<!-- Title and price -->
+							<h6 class="lead fw-bold mb-2">{{x.pname}}</h6>
+							<!-- Button -->
+							<a href="{% url 'checkout'%}" class="btn btn-sm btn-primary mb-0">Buy now</a>
+							<a href="{% url 'checkout'%}" class="btn btn-sm btn-danger mb-0">Add to cart</a>
+						</div>
+					</div> <!-- Row END -->
+				</div>
+			</div>
+			<!-- Action box item END -->
+
+			<!-- Action box item START -->
+			<div class="col-lg-6">
+				<div class="bg-danger rounded bg-opacity-15 p-5 h-100">
+
+					<!-- Content -->
+					<div class="row g-3  align-items-center my-auto">
+						<!-- Content -->
+						<div class="col-sm-7 text-light col-lg-12 col-xl-7">
+							<h2 class="mb-1 fs-1">50%OFF</h2>
+							<p class="mb-3 h5 fw-light lead">Enroll now in the most popular and best-rated Books.</p>
+							<a href="{% url 'shop'%}" class="btn btn-dark mb-0">View Books</a>
+						</div>
+
+						<!-- Image -->
+						<div class="col-sm-5 col-lg-12 col-xl-5">
+							<img src="assets/images/element/29.svg" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Action box item END -->
+		</div>
+	</div>
+</section>
+</main>
+
+{% endblock body %}

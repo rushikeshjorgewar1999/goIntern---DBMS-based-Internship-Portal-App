@@ -1,0 +1,114 @@
+{% extends 'basic.html' %}
+{% block title %}Internships{% endblock title %}
+{% block body %}
+<main>
+    <section class="section">
+        <div class='container-fluid p-5'>
+            <h3 class='h3'>Jobs by Locations</h3>
+                  <a href="{% url 'bangalore'%}"><div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+                        <div class="col ">
+                          <div class="card card-cover h-75 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('https://image.shutterstock.com/image-photo/aerial-view-flyover-bangalore-600w-1591067851.jpg');">
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Silicon Valley of India</h2>
+                              <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">
+                                  <img src="https://img.freepik.com/free-vector/cross-platform-software-concept-illustration_114360-7293.jpg?t=st=1655899190~exp=1655899790~hmac=efebb271d3a71c548f2878920779472454adc7055fa73c6282a83ac28aad1df2&w=996" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                                </li>
+                                <li class="d-flex align-items-center me-3">
+                                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                  <small>Earth</small>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                  <small>3d</small>
+                                </li>
+                              </ul>
+                            </div>
+                          </div></a>
+                          <div class='p-2'>
+                              <h3 class='h3 text-center'><a href="{% url 'bangalore'%}">Bengaluru</a></h3>
+                            </div>
+                        </div>
+                  
+                        <div class="col">
+                          <a href="{% url 'hyderabad'%}"><div class="card card-cover h-75 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('https://image.shutterstock.com/image-photo/charminar-iconing-building-listed-among-600w-1932761069.jpg');">
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
+                              <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">
+                                  <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                                </li>
+                                <li class="d-flex align-items-center me-3">
+                                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                  <small>Pakistan</small>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                  <small>4d</small>
+                                </li>
+                              </ul>
+                            </div>
+                          </div></a>
+                          <div class='p-2'>
+                            <h3 class='h3 text-center'><a href="{% url 'hyderabad'%}">Hyderabad</a></h3>
+                          </div>
+                        </div>
+                  
+                        
+                        <div class="col">
+                            <a href="{% url 'chennai'%}"><div class="card card-cover h-75 overflow-hidden text-white bg-dark rounded-4 shadow-lg" style="background-image: url('https://image.shutterstock.com/image-photo/chennai-high-court-ancient-courts-600w-1731845158.jpg');">
+                              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
+                                <ul class="d-flex list-unstyled mt-auto">
+                                  <li class="me-auto">
+                                    <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                                  </li>
+                                  <li class="d-flex align-items-center me-3">
+                                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                    <small>Pakistan</small>
+                                  </li>
+                                  <li class="d-flex align-items-center">
+                                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                    <small>4d</small>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div></a>
+                            <div class='p-2'>
+                                <h3 class='h3 text-center'><a href="{% url 'chennai'%}">Chennai</a></h3>
+                              </div>  
+                        </div>
+
+                        <div class="col">
+                         <a href="{% url 'pune'%}"><div class="card card-cover  h-75 overflow-hidden text-white opacity-50 bg-dark rounded-4 shadow-lg" style="background-image: url('https://image.shutterstock.com/image-photo/pune-india-may-31-2020-600w-1745202659.jpg');">
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
+                              <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">
+                                  <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                                </li>
+                                <li class="d-flex align-items-center me-3">
+                                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                  <small>California</small>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                  <small>5d</small>
+                                </li>
+                              </ul>
+                            </div>
+                          </div></a>
+                          <div class='p-2'>
+                            <h3 class='h3 text-center'><a href="{% url 'pune'%}">Pune</a></h3>
+                          </div>
+                        </div>
+                      </div>
+                   </div>
+                </section>
+                <section class="container-fluid p-5  mt-sm-0">
+                    <h2 class="h3 text-start text-sm-start ">Top companies</h2>
+                    
+                    </div>
+                  </section>
+            </main>
+{% endblock body %}

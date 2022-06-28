@@ -1,0 +1,73 @@
+{% extends 'basic.html' %}
+{% block title %}Login{% endblock  %}
+{% block body %}
+<main>
+    <section>
+        <div class="container">
+            <div class="row">
+          <div class="col-md-10 col-lg-8 col-xl-6 mx-auto">
+            <div class="p-4 p-sm-5 bg-primary-soft rounded">
+                        <h2>Log in to your account</h2>
+                        <!-- Form START -->
+                        <form method='post' action="{% url 'myhome'%}" class="mt-4">
+                            {% csrf_token %}
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label class="form-label" for="loginusername">Username</label>
+                                <input type="text" class="form-control" id="loginusername" name='loginusername' placeholder="E-mail" required>
+                            </div>
+                            <!-- Password -->
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input type="password" class="form-control" name='loginpassword' id="loginpassword" placeholder="*********" required>
+                            </div>
+                            <!-- Checkbox -->
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">keep me signed in</label>
+                            </div>
+                            <!-- Button -->
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-success">Sign me in</button>
+                                </div>
+                                <div class="col-sm-8 text-sm-end">
+                                    <span>Don't have an account? <a href="{% url 'signup'%}"><u>Sign up</u></a></span>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Form END -->
+                        <hr>
+                        <!-- Social-media btn -->
+                        <div class="text-center">
+                            <p>Sign in with your social network for quick access</p>
+                           <ul class="list-unstyled d-sm-flex mt-3 justify-content-center">
+                                <li class="mx-2 my-2">
+                                    <div class="fb-login-button" data-width="100px" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="false"></div>
+
+                                </li>
+                                <li class="mx-2 my-2">
+                                    <div id="g_id_onload"
+                                    data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                                    data-login_uri="https://127.0.0.1.8000/"
+                                    data-auto_select="true">
+                                 </div>
+                                 <div class="g_id_signin"
+                                    data-type="standard"
+                                    data-size="large"
+                                    data-theme="outline"
+                                    data-text="sign_in_with"
+                                    data-shape="rectangular"
+                                    data-logo_alignment="left">
+                                 </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+          </div>
+        </div>
+        </div>
+    </section>
+</main>
+
+{% endblock  %}

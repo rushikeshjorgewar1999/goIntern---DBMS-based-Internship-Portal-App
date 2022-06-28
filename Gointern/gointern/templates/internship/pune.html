@@ -1,0 +1,29 @@
+{% extends 'basic.html' %}
+{% block title %}Pune{% endblock title %}
+{% block body %}
+<div class='container-fluid text-center '>
+    <h1 class='display-1 text-center'>Internships in Pune</h1>
+    <div class='row text-center '>
+        <div class='col-md-8 text-start p-5'>
+            {% for pun in pun %}
+            <div class="card  w-25">
+                <span class='badge bg-primary text-light'>{{pun.category}}</span>
+                <div class="card-body">
+                    <h5 class="card-title">{{pun.post}}</h5>
+                    <ul>
+                        <li>Company - {{pun.firm}}</li>
+                        <li>Location - {{pun.location}}</li>
+                        <li>Stipend - {{pun.stipend}}</li>
+                        <li>Duration - {{pun.duration}}</li>
+                    </ul>
+                    <a href="/internship/{{pun.jobid}}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class='col-md-4'>
+
+        </div>
+    </div>
+</div>
+{% endblock body %}
