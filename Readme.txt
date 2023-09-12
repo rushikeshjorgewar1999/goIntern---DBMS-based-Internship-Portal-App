@@ -19,10 +19,8 @@ Technology Stack:
 
     Backend Framework: Django, a Python web framework
     Frontend Framework: Bootstrap, a popular CSS framework
-    Database: SQLite, PostgreSQL, or MySQL
+    Database: SQLite
     Authentication and Authorization: Django's built-in authentication system
-    Messaging: Django's built-in messaging system or a third-party messaging library
-    Deployment: Deployment options such as Heroku, AWS, or any other preferred hosting service
 
 Conclusion:
 
